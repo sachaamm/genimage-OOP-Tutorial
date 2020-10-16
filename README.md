@@ -1,6 +1,6 @@
 # genimage-OOP-Tutorial
 
-Projet tutoriel abordant les notions elementaires de la Programmation orientee objet ( POO ou OOP en anglais ).
+Projet tutoriel abordant les notions elementaires de la Programmation orientee objet ( [POO](https://fr.wikipedia.org/wiki/Programmation_orient%C3%A9e_objet) ou OOP en anglais ).
 
 ## Scenes
 
