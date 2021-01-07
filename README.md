@@ -34,17 +34,35 @@ Un mot est composé de lettres, c'est à dire qu'un objet est composé de primit
 Voici un exemple de type prmitifs dans le langage C# : 
 - int : un nombre entier ( ex : -1,0,1,2,3,4... )
 - float : un nombre à virgule ( ex : 3.14f )
+- byte : un nombre entier allant de 0 à 255 ( ex : 3 )
+- bool : un booléen qui correspond à deux statuts possible, vrai ou faux ( ex: true )
 - char : un caractère ( ex : 'c' )
 - string : une chaine de caratère ( ex : "Bonjour" )
-- byte : un nombre entier allant de 0 à 255 ( ex : 3 )
-- bool : un booléen qui correspond à des statut, vrai ou faux ( ex: true )
+L'exemple du type primitif string peut être confusant puisqu'une string est une chaîne de caractères, elle est donc une primitive comportant d'autres primitives ! 
+En Java par exemple, String est un objet. Pourtant en C#, une string est bien un type primitif. 
+A savoir : un type primitif commence toujours par une minuscule. Un objet quant à lui, commence usuellement par une majuscule, et il est fortement déconseillé de définir des objets sans respecter cette règle. La coloration syntaxique de votre IDE ( comme par exemple Visual Studio ) vous permet également via la coloration syntaxique de différencier un type "primitif" d'un objet. 
+Si on résume : 
+- Les types primitifs sont les types élémentaires, contrairement aux objets qui sont des agglomérats de primitifs / sous-objets.
+- Un objet commence par une majuscule quant un type primitif commence par une minuscule
+- La coloration syntaxique de certains IDE permettent de distinguer les types primitifs des objets.
+- La notion de type regroupe les types primitifs et les objets
+
+## Mon premier objet avec un cas pratique, le type Humain
+
 Je peux donc créer un objet en utilisant le mot clé class
 ```cs
-class MonPremierObjet{
-  string nomDeMonPremierObjet = "Mon Premier Objet";
-  int importance = 100;
+class Humain {
+  string nom;
+  int age;
 }
+
+Humain toto;
 ```
+
+Comme on peut le voir, la déclaration d'un objet peut se faire via le mot clé class.
+Je viens donc créer une classe que je pourrais utiliser à ma guise. J'ai donc créer ici un nouveau Type intitulé "Humain". Usuellement la déclaration d'un objet commence avec une majuscule.  Ma classe **Humain** contient deux variables, une variable de type primitif **string** intitulé **"nom"** et une variable de type primitif de type **int** intitulé **"age"**. 
+J'ai crée plus bas une variable de type **Humain** avec la classe que j'ai crée, intitulé "toto". On peut donc dire que "toto" est un "Humain". Pour reprendre les analogies, la classe Humain serait donc en quelque sorte un objet représentant une notion abstraite, comme par exemple une carte d'identité. La carte d'identité donne les caractéristiques d'un Humain: nom, age, etc... toto lui, est une personne réelle. Donc une classe est à voir comme un modèle, une structure englobant des caractéristiques regroupées autour d'un ensemble constituant ( ici les caractéristique propres à chaque humain ).
+
 
 
 ## L'utilité de la Programmation Orientée Objet illustré par un cas concret : "la problématique Minecraft"
