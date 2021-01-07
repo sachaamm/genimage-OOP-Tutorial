@@ -32,12 +32,12 @@ Ma variable est donc de type int. On distingue les types primitifs des objets. T
 type élémentaire, c'est à dire que si on fait l'analogie d'un langage informatique à un langage conventionnel, une bonne analogie serait de faire correspondre aux primitifs les lettres d'un langage, quand les objets correspondraient à des mots.
 Un mot est composé de lettres, c'est à dire qu'un objet est composé de primitifs, ou de sous objets. Un type primitif est le type le plus élémentaire qui soit, c'est à dire qu'il n'est consitué d'aucun sous objet. 
 Voici un exemple de type prmitifs dans le langage C# : 
-- int : un nombre entier ( ex : -1,0,1,2,3,4... )
-- float : un nombre à virgule ( ex : 3.14f )
-- byte : un nombre entier allant de 0 à 255 ( ex : 3 )
-- bool : un booléen qui correspond à deux statuts possible, vrai ou faux ( ex: true )
-- char : un caractère ( ex : 'c' )
-- string : une chaine de caratère ( ex : "Bonjour" )
+- **int** : un nombre entier ( ex : -1,0,1,2,3,4... )
+- **float** : un nombre à virgule ( ex : 3.14f )
+- **byte** : un nombre entier allant de 0 à 255 ( ex : 3 )
+- **bool** : un booléen qui correspond à deux statuts possible, vrai ou faux ( ex: true )
+- **char** : un caractère ( ex : 'c' )
+- **string** : une chaine de caratère ( ex : "Bonjour" )
 L'exemple du type primitif string peut être confusant puisqu'une string est une chaîne de caractères, elle est donc une primitive comportant d'autres primitives ! 
 En Java par exemple, String est un objet. Pourtant en C#, une string est bien un type primitif. 
 A savoir : un type primitif commence toujours par une minuscule. Un objet quant à lui, commence usuellement par une majuscule, et il est fortement déconseillé de définir des objets sans respecter cette règle. La coloration syntaxique de votre IDE ( comme par exemple Visual Studio ) vous permet également via la coloration syntaxique de différencier un type "primitif" d'un objet. 
@@ -60,8 +60,11 @@ Humain toto;
 ```
 
 Comme on peut le voir, la déclaration d'un objet peut se faire via le mot clé class.
-Je viens donc créer une classe que je pourrais utiliser à ma guise. J'ai donc créer ici un nouveau Type intitulé "Humain". Usuellement la déclaration d'un objet commence avec une majuscule.  Ma classe **Humain** contient deux variables, une variable de type primitif **string** intitulé **"nom"** et une variable de type primitif de type **int** intitulé **"age"**. 
+Je viens donc créer une classe que je pourrais utiliser à ma guise. J'ai donc créer ici un nouveau Type intitulé "Humain". Ma classe **Humain** contient deux variables, une variable de type primitif **string** intitulé **"nom"** et une variable de type primitif de type **int** intitulé **"age"**. 
 J'ai crée plus bas une variable de type **Humain** avec la classe que j'ai crée, intitulé "toto". On peut donc dire que "toto" est un "Humain". Pour reprendre les analogies, la classe Humain serait donc en quelque sorte un objet représentant une notion abstraite, comme par exemple une carte d'identité. La carte d'identité donne les caractéristiques d'un Humain: nom, age, etc... toto lui, est une personne réelle. Donc une classe est à voir comme un modèle, une structure englobant des caractéristiques regroupées autour d'un ensemble constituant ( ici les caractéristique propres à chaque humain ).
+
+## Le constructeur
+Nous nous sommes contentés de déclarer notre variable toto de type **Humain** sans lui assigner de valeur. Nous allons lui assigner maintenant une valeur, et pour cela nous allons déclarer dans la classe un constructeur pour pouvoir assigner une valeur à **toto**.
 
 
 
