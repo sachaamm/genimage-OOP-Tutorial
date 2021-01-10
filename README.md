@@ -112,8 +112,8 @@ bool[,,] blocs = new bool [worldSideSize,worldSideSize,worldSideSize];
 ```
 
 La variable **blocs** est donc un tableau en 3 dimensions, où chaque dimension du tableau enregistre **worldSideSize** valeurs de booléen. 
-L'utilisation du booléen détermine la présence ou l'absence d'un bloc à un point. La variable blocs contiendra donc 256*256*256 possibilités soit un total de
-16777216 entrées.
+L'utilisation du booléen détermine la présence ou l'absence d'un bloc à un point. La variable blocs contiendra donc 256 * 256 * 256 possibilités soit un total de
+**16777216 entrées**.
 
 Le tableau blocs enregistre chaque bloc via un booléen correspondant à la présence ou l'absence d'un bloc à une position 3D ( x,y,z ). On souhaite que par défaut le tableau soit vide, c'est à dire que toutes les valeurs soit égales à false. 
 On va donc itérer au sein de ce tableau dans ces 3 dimensions pour initialiser chaque valeur et initialiser la valeur pour la mettre à false.
