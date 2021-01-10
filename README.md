@@ -127,4 +127,34 @@ for(int x=0; x < worldSideSize; x++){
 }
 ```
 
+Je peux imaginer également une fonction d'ajout de blocs à une position donnée. Supprimer un bloc à une position reviendrait à définir la valeur de l'entrée de blocs à la position x,y,z à false, quand la création de bloc reviendrait à mettre la valeur de cette entrée x,y,z à true.
+
+```cs
+void CreateBlockAtPosition(int x, int y, int z){
+  blocs[x,y,z] = true;
+}
+
+void RemoveBlockAtPosition(int x, int y, int z){
+  blocs[x,y,z] = false;
+}
+```
+
+Si je souhaite pouvoir attribuer une couleur, je vais devoir également définir un tableau à 3 dimensions intitulées **blocsColors**
+```cs
+int worldSideSize = 256;
+bool[,,] blocs = new bool[worldSideSize,worldSideSize,worldSideSize];
+Color[,,] blocsColors = new Color[worldSideSize,worldSideSize,worldSideSize];
+```
+
+J'ai maintenant 2 tableaux à 3 dimensions à gérer parallélement. Un contient l'existence ou non d'un bloc à une position (blocs) et un autre correspond aux couleurs des blocs de mon univers. Ce principe crée plusieurs probèmes et n'est pas une bonne approche pour plusieurs raisons. Je vais devoir gérer en parallèle 2 tableaux et des erreurs peuvent ainsi se produire. Laissez moi illustrer ce principe avec un cas d'usage. 
+Je souhaite récupérer la couleur d'un cube à une position pour l'afficher. Mais, suite à un oubli, je n'ai pas encore défini la valeur de la couleur du bloc à cette position. 
+Quand j'essaierai d'afficher un cube et d'accéder à sa valeur, je vais donc avoir un NullPointerException.
+
+```cs
+Color GetBlocColorAtPos(int x, int y, int z){
+  return blocsColors[x,y,z]; 
+  // Comme la valeur n'a encore jamais été initialisée, elle renverra sa valeur par défaut, c'est à dire pour ce cas, null...
+}
+```
+
 
