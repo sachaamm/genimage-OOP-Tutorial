@@ -66,7 +66,65 @@ J'ai crée plus bas une variable de type **Humain** avec la classe que j'ai cré
 ## Le constructeur
 Nous nous sommes contentés de déclarer notre variable toto de type **Humain** sans lui assigner de valeur. Nous allons lui assigner maintenant une valeur, et pour cela nous allons déclarer dans la classe un constructeur pour pouvoir assigner une valeur à **toto**.
 
+```cs
+class Humain {
+  string nom;
+  int age;
+  
+  public Humain(string _nom, int _age){
+    nom = _nom;
+    age = _age;
+  }
+}
+
+Humain toto = new Humain("TOTO", 15); // toto a maintenant pour variable nom = "TOTO" et age = à 15
+```
+
+Le constructeur est utilisé pour assigner les valeur des variables au sein de notre classe **Humain**. Notez que le constructeur est précédé du mot clé **public** qui nous permet d'appeler le constructeur en dehors de la classe 
 
 
 ## L'utilité de la Programmation Orientée Objet illustré par un cas concret : "la problématique Minecraft"
+Nous sommes en droit de nous demander l'utilité de l'approche de la Programmation orientée objet. Nous pouvons aborder l'exemple de la problématique Minecraft. Minecraft est un jeu de type sandbox, où le joueur façonne l'environnement bloc par bloc. Le joueur vient modifier cet environnement de bloc existant, et le jeu doit donc stocker cet environnement de bloc en considérant chaque l'existence de chacun des blocs à une position donnée.
+
+... On aura une méthode pour ajouter un bloc en mettant la valeur du booléen à la position 3D correspondante pour signaler la présence d'un bloc à un endroit
+
+
+
+On peut donc considérer cet environnement de blocs enregistré sommairement comme une liste de Vector3
+
+```cs
+List<Vector3> blocs = new List<Vector3>(); // Vector3 commence par une majuscule, il ne s'agit pas d'un type primitif !
+```
+Cette méthode à l'avantage d'être concise et simple à utiliser. Lorsqu'on rajoutera un bloc dans l'environnement, on ajoutera un Vector3 qui correspondra a la position x,y et z du bloc en question.
+
+En revanche, l'utilisation d'un Vector3 n'est pas optimal quand on sait qu'un Vector3 est un objet contenant une position x,y et z flottante. Or, les blocs dans Minecraft sont positionnés sur des valeurs discrètes, ( comme dans une grille ou le nombre de possibilités est restreint, contrairement à un nombre flottant qui peut venir se positionner sur des positions flottantes c'est à dire n'importe ou ). Heureusement il existe pour nous une solution, il s'agit du Vector3Int. 
+On aura donc 
+```cs
+List<Vector3Int> blocs = new List<Vector3Int>(); // Vector3Int commence par une majuscule, il ne s'agit pas d'un type primitif !
+```
+
+Pour avoir des performances plus effectives, on peut également utiliser un tableau en plusieurs dimensions plutôt qu'une liste.
+On peut donc considérer cet environnement de blocs enregistré comme un tableau de int à 3 dimensions, puisque comme expliqué précedemment les blocs dans Minecraft sont positionnés sur des valeurs discrètes, ( comme dans une grille ou le nombre de possibilités est restreint ).
+On pourrait donc résumer les blocs ainsi:
+```cs
+int worldSideSize = 256;
+bool[,,] blocs = new bool [worldSideSize,worldSideSize,worldSideSize];
+```
+
+La variable **blocs** est donc un tableau en 3 dimensions, où chaque dimension du tableau enregistre **worldSideSize** valeurs de booléen. 
+L'utilisation du booléen détermine la présence ou l'absence d'un bloc à un point. La variable blocs contiendra donc 256*256*256 possibilités soit un total de
+16777216 entrées.
+
+Le tableau blocs enregistre chaque bloc via un booléen correspondant à la présence ou l'absence d'un bloc à une position 3D ( x,y,z ). On souhaite que par défaut le tableau soit vide, c'est à dire que toutes les valeurs soit égales à false. 
+On va donc itérer au sein de ce tableau dans ces 3 dimensions pour initialiser chaque valeur et initialiser la valeur pour la mettre à false.
+```cs
+for(int x=0; x < worldSideSize; x++){
+  for(int x=0; x < worldSideSize; x++){
+    for(int x=0; x < worldSideSize; x++){
+      blocs[x,y,z] = false;
+    }
+  }
+}
+```
+
 
