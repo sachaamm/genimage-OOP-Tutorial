@@ -115,7 +115,7 @@ La variable **blocs** est donc un tableau en 3 dimensions, où chaque dimension 
 L'utilisation du booléen détermine la présence ou l'absence d'un bloc à un point. La variable blocs contiendra donc 256 * 256 * 256 possibilités soit un total de
 **16777216 entrées**.
 
-Le tableau blocs enregistre chaque bloc via un booléen correspondant à la présence ou l'absence d'un bloc à une position 3D ( x,y,z ). On souhaite que par défaut le tableau soit vide, c'est à dire que toutes les valeurs soit égales à false. 
+Le tableau **blocs** enregistre chaque bloc via un booléen correspondant à la présence ou l'absence d'un bloc à une position 3D ( x,y,z ). On souhaite que par défaut le tableau soit vide, c'est à dire que toutes les valeurs soit égales à false. 
 On va donc itérer au sein de ce tableau dans ces 3 dimensions pour initialiser chaque valeur et initialiser la valeur pour la mettre à false.
 ```cs
 for(int x=0; x < worldSideSize; x++){
@@ -139,7 +139,7 @@ void RemoveBlockAtPosition(int x, int y, int z){
 }
 ```
 
-Si je souhaite pouvoir attribuer une couleur, je vais devoir également définir un tableau à 3 dimensions intitulées **blocsColors**
+Imaginons maintenant que je souhaite attribuer une couleur à un bloc, je vais devoir également définir un tableau à 3 dimensions intitulées **blocsColors**
 ```cs
 int worldSideSize = 256;
 bool[,,] blocs = new bool[worldSideSize,worldSideSize,worldSideSize];
@@ -156,5 +156,13 @@ Color GetBlocColorAtPos(int x, int y, int z){
   // Comme la valeur n'a encore jamais été initialisée, elle renverra sa valeur par défaut, c'est à dire pour ce cas, null...
 }
 ```
+
+Donc si je souhaite afficher une couleur non définie donc nulle, je risque d'avoir des erreurs plus tard.
+Je n'ai donc pas obéit à une régle de programmation, **la règle de non-divergence**. Utiliser plusieurs tableaux ou variables pour représenter un même objet ( ici les blocs ) doit être centralisé dans un contexte commun pour éviter de créer de la complexité accidentelle au sein du code et se trouver dans un stade où des bugs se produiront quand certaines variables auront été mises à jour quand d'autres ne l'auront pas été. Cette non centralisation va donc créer une perte de cohérence, car leurs états vont évoluer dans un état différer qu'on devra se garantir d'être synchronisé. Ce contexte commun va être **un objet que nous allons définir** pour centraliser la complexité. **Et dans cette optique de centralisation de la complexité, la programmation orientée objet va venir à notre rescousse.**
+
+## Illustration
+
+
+
 
 
