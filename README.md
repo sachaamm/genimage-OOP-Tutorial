@@ -158,7 +158,8 @@ Color GetBlocColorAtPos(int x, int y, int z){
 ```
 
 Donc si je souhaite afficher une couleur non définie donc nulle, je risque d'avoir des erreurs plus tard.
-Je n'ai donc pas obéit à une régle de programmation, **la règle de non-divergence**. Utiliser plusieurs tableaux ou variables pour représenter un même objet ( ici les blocs ) doit être centralisé dans un contexte commun pour éviter de créer de la complexité accidentelle au sein du code et se trouver dans un stade où des bugs se produiront quand certaines variables auront été mises à jour quand d'autres ne l'auront pas été. Cette non centralisation va donc créer une perte de cohérence, car leurs états vont évoluer dans un état différer qu'on devra se garantir d'être synchronisé. Ce contexte commun va être **un objet que nous allons définir** pour centraliser la complexité. **Et dans cette optique de centralisation de la complexité, la programmation orientée objet va venir à notre rescousse.**
+Je n'ai donc pas obéit à une régle de programmation, **la règle de non-divergence**. Utiliser plusieurs tableaux ou variables pour représenter un même objet ( ici les blocs: leur présence à une position et leur couleur ) doit être **centralisé dans un contexte commun pour éviter de créer de la complexité accidentelle** au sein du code et se trouver dans un stade où des bugs/incohérences se produiront quand certaines variables auront été mises à jour quand d'autres ne l'auront pas été. Cette non centralisation va donc créer une perte de cohérence. (leurs états vont évoluer dans un état différé alors qu'on devait se garantir synchronisé) 
+Ce contexte commun va être **un objet que nous allons définir** pour centraliser la complexité. **Et dans cette optique de centralisation de la complexité, la programmation orientée objet va venir à notre rescousse.**
 
 ## Illustration
 
