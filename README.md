@@ -163,6 +163,7 @@ Ce contexte commun va être **un objet que nous allons définir** pour centralis
 
 ## Illustration
 
+....
 
 
 
